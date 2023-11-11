@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -7,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import { useAuth0 } from "@auth0/auth0-react";
+import {useNavigate} from "react-router-dom"
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -20,6 +21,8 @@ const ProfileIcon = () => {
         logout,
     } = useAuth0();
 
+    const navigate = useNavigate(); 
+
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -31,8 +34,9 @@ const ProfileIcon = () => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = (setting) => {
+    const handleUserMenu = (setting) => {
         if (setting == "Logout") logoutWithRedirect();
+        if (setting == "Profile") navigateToProfile();
         setAnchorElUser(null);
     };
 
@@ -42,6 +46,10 @@ const ProfileIcon = () => {
                 returnTo: window.location.origin,
             }
         });
+    
+    const navigateToProfile = () => {
+        navigate("/Profile")
+    }    
 
     return (
         <Box sx={{ flexGrow: 0 }}>
@@ -64,10 +72,10 @@ const ProfileIcon = () => {
                     horizontal: 'right',
                 }}
                 open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
+                onClose={handleUserMenu}
             >
                 {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={() => handleCloseUserMenu(setting)}>
+                    <MenuItem key={setting} onClick={() => handleUserMenu(setting)}>
                         <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
                 ))}

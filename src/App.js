@@ -20,12 +20,12 @@ const App = () => {
     return "<Loading />";
   }
   return (
-    <Router >
+    <Router history={history}>
       <div id="app" >
         <Container >
           <Routes>
             <Route path="/" exact element={<Blog/>} />
-            <Route path="/profile" element={<Profile/>} />
+            <Route path="/profile" element={<div>test</div>} />
           </Routes>
         </Container>
       </div>
