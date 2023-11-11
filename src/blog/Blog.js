@@ -11,7 +11,8 @@ import Container from '@mui/material/Container';
 import Header from '../home/Header';
 import Link from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
+import PropTypes from 'prop-types';
+
 
 
 
@@ -92,7 +93,7 @@ export default function Blog() {
                 variant="dense"
                 sx={{ justifyContent: 'space-between', overflowX: 'auto'}}
             >
-                {sections?.map((section) => (
+                {sections.map((section) => (
                     <Link
                         color="inherit"
                         noWrap
@@ -122,5 +123,15 @@ export default function Blog() {
                 </Grid>
         </Container>
 
-    )
+    );
 }
+
+// Blog.propTypes = {
+//     sections: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         title: PropTypes.string.isRequired,
+//         url: PropTypes.string.isRequired,
+//       }),
+//     ).isRequired,
+//     title: PropTypes.string.isRequired,
+//   };

@@ -11,22 +11,13 @@ import Footer from './Footer';
 import Header from './Header';
 import Blog from '../blog/Blog';
 
-const sections = [
-  { title: 'All Engineering Topics', url: '#' },
-  { title: 'Cloud', url: '#' },
-  { title: 'Message Streaming', url: '#' },
-  { title: 'Backend', url: '#' },
-  { title: 'Web Frontend', url: '#' },
-  { title: 'Mobile', url: '#' },
-  { title: 'Data Science and Databases', url: '#' },
-  { title: 'More...', url: '#' }
-];
-
-
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Home() {
+export default function Home(props) {
+
+  const { page } = props;
+  console.log(page)
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />

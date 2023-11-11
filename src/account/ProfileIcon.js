@@ -23,7 +23,7 @@ const ProfileIcon = () => {
 
     const navigate = useNavigate(); 
 
-    const handleOpenNavMenu = (event) => {
+const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event) => {
