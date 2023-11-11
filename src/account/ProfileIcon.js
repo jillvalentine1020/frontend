@@ -48,7 +48,7 @@ const ProfileIcon = () => {
         });
     
     const navigateToProfile = () => {
-        navigate("/Profile")
+        navigate("/profile")
     }    
 
     return (

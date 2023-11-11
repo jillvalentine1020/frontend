@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { Container } from "reactstrap";
 import Profile from './profile/Profile';
 import { createBrowserHistory } from 'history';
-import Blog from './blog/Blog';
+import Home from './home/Home';
 const history = createBrowserHistory();
 
 
@@ -24,7 +24,7 @@ const App = () => {
       <div id="app" >
         <Container >
           <Routes>
-            <Route path="/" exact element={<Blog/>} />
+            <Route path="/" exact element={<Home/>} />
             <Route path="/profile" element={<div>test</div>} />
           </Routes>
         </Container>
