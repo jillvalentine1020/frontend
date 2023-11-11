@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { useAuth0 } from "@auth0/auth0-react";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { Container } from "reactstrap";
+import Profile from './profile/Profile';
+import { createBrowserHistory } from 'history';
+import Blog from './blog/Blog';
+const history = createBrowserHistory();
 
-function App() {
+
+const App = () => {
+
+  const { isLoading, error } = useAuth0();
+
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
+
+  if (isLoading) {
+    return "<Loading />";
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router >
+      <div id="app" >
+        <Container >
+          <Routes>
+            <Route path="/" exact element={<Blog/>} />
+            <Route path="/profile" element={<Profile/>} />
+          </Routes>
+        </Container>
+      </div>
+    </Router>
   );
 }
 
