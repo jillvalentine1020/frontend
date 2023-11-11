@@ -90,7 +90,7 @@ export default function Blog() {
             <Toolbar
                 component="nav"
                 variant="dense"
-                sx={{ justifyContent: 'space-between', overflowX: 'auto', minHeight: 0}}
+                sx={{ justifyContent: 'space-between', overflowX: 'auto'}}
             >
                 {sections?.map((section) => (
                     <Link
