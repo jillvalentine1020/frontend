@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -11,17 +11,15 @@ import {useNavigate} from "react-router-dom"
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ProfileIcon = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+const ProfileIcon = ({ setPage }) => {
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
     const {
         user,
         isAuthenticated,
         loginWithRedirect,
         logout,
     } = useAuth0();
-
-    const navigate = useNavigate(); 
 
 const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -35,8 +33,9 @@ const handleOpenNavMenu = (event) => {
     };
 
     const handleUserMenu = (setting) => {
-        if (setting == "Logout") logoutWithRedirect();
-        if (setting == "Profile") navigateToProfile();
+        setPage(setting);
+        // if (setting == "Logout") logoutWithRedirect();
+        // if (setting == "Profile") navigateToProfile();
         setAnchorElUser(null);
     };
 
@@ -46,10 +45,7 @@ const handleOpenNavMenu = (event) => {
                 returnTo: window.location.origin,
             }
         });
-    
-    const navigateToProfile = () => {
-        navigate("/profile")
-    }    
+     
 
     return (
         <Box sx={{ flexGrow: 0 }}>

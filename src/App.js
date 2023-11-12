@@ -5,6 +5,7 @@ import { Container } from "reactstrap";
 import Profile from './profile/Profile';
 import { createBrowserHistory } from 'history';
 import Home from './home/Home';
+import LoadingIcon from './utilities/LoadingIcon';
 const history = createBrowserHistory();
 
 
@@ -17,20 +18,11 @@ const App = () => {
   }
 
   if (isLoading) {
-    return "<Loading />";
+    return <LoadingIcon/>;
   }
   return (
-    <Router history={history}>
-      <div id="app" >
-        <Container >
-          <Routes>
-            <Route path="/" exact element={<Home page={history}/>} />
-            <Route path="/profile" element={<Home page={history}/>} />
-          </Routes>
-        </Container>
-      </div>
-    </Router>
+   <Home/>
   );
-}
+} 
 
 export default App;

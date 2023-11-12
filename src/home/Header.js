@@ -10,8 +10,8 @@ import LoginButton from '../login/LoginButton';
 import ProfileIcon from '../account/ProfileIcon';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Header = (props) => {
-  const { sections, title } = props;
+const Header = ({ title, setPage}) => {
+  //const { sections, title } = props;
   const {
     user,
     isAuthenticated,
@@ -36,7 +36,7 @@ const Header = (props) => {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        {isAuthenticated ? <ProfileIcon /> : <LoginButton />}
+        {isAuthenticated ? <ProfileIcon setPage={setPage} /> : <LoginButton />}
       </Toolbar>
     </React.Fragment>
   );
