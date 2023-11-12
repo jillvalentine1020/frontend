@@ -10,32 +10,53 @@ import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Header from './Header';
 import Blog from '../blog/Blog';
+import Profile from "../profile/Profile";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoadingIcon from '../utilities/LoadingIcon'
 
 // TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
+// const defaultTheme = createTheme();
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 
 export default function Home() {
   const [page, setPage] = useState("Blog");
+  const {
+    user,
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    isLoading, 
+    error
+  } = useAuth0();
 
-  console.log("page", page)
+  const logoutWithRedirect = () =>
+    logout({
+        logoutParams: {
+            returnTo: window.location.origin,
+        }
+  });
 
   const renderPage = (page) => {
     switch (page) {
+      case 'Blog':
+        return <Blog/>;  
       case 'Profile':
-        return <div>Profile</div>;
+        return <Profile/>;
       case 'Account':
         return <div>Account</div>;
-      case 'Dashboard':
-        return <div>Dashboard</div>;
       case 'Logout':
-        return <div>Logout</div>;  
-      default:
-        return <div>Error: Invalid User Role</div>;
+        logoutWithRedirect();
     }
   }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
         <Header title="Blog" setPage={setPage}/>

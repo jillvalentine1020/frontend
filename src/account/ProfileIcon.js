@@ -9,7 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import { useAuth0 } from "@auth0/auth0-react";
 import {useNavigate} from "react-router-dom"
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'Logout'];
 
 const ProfileIcon = ({ setPage }) => {
     const [anchorElNav, setAnchorElNav] = useState(null);

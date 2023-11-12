@@ -16,7 +16,6 @@ const App = () => {
   if (error) {
     return <div>Oops... {error.message}</div>;
   }
-
   if (isLoading) {
     return <LoadingIcon/>;
   }

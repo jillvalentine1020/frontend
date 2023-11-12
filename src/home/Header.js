@@ -11,7 +11,6 @@ import ProfileIcon from '../account/ProfileIcon';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = ({ title, setPage}) => {
-  //const { sections, title } = props;
   const {
     user,
     isAuthenticated,
@@ -31,7 +30,10 @@ const Header = ({ title, setPage}) => {
           noWrap
           sx={{ flex: 1 }}
         >
-          {title}
+          <Button 
+            variant="text"
+            onClick={() => setPage("Blog")}
+          >{title}</Button>
         </Typography>
         <IconButton>
           <SearchIcon />
