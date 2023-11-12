@@ -10,7 +10,7 @@ import LoginButton from '../login/LoginButton';
 import ProfileIcon from '../account/ProfileIcon';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Header = ({ title, setPage}) => {
+const Header = ({ title, setPage }) => {
   const {
     user,
     isAuthenticated,
@@ -21,7 +21,13 @@ const Header = ({ title, setPage}) => {
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button size="small">Subscribe</Button>
+        {isAuthenticated ?
+          <Button
+            size="small"
+            onClick={() => setPage("Create")}
+          >
+            Create Tutorial
+          </Button> : null}
         <Typography
           component="h2"
           variant="h5"
@@ -30,7 +36,7 @@ const Header = ({ title, setPage}) => {
           noWrap
           sx={{ flex: 1 }}
         >
-          <Button 
+          <Button
             variant="text"
             onClick={() => setPage("Blog")}
           >{title}</Button>

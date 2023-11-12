@@ -12,10 +12,6 @@ import Header from './Header';
 import Blog from '../blog/Blog';
 import Profile from "../profile/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoadingIcon from '../utilities/LoadingIcon'
-
-// TODO remove, this demo shouldn't need to reset the theme.
-// const defaultTheme = createTheme();
 
 const darkTheme = createTheme({
   palette: {
@@ -31,25 +27,27 @@ export default function Home() {
     isAuthenticated,
     loginWithRedirect,
     logout,
-    isLoading, 
+    isLoading,
     error
   } = useAuth0();
 
   const logoutWithRedirect = () =>
     logout({
-        logoutParams: {
-            returnTo: window.location.origin,
-        }
-  });
+      logoutParams: {
+        returnTo: window.location.origin,
+      }
+    });
 
   const renderPage = (page) => {
     switch (page) {
       case 'Blog':
-        return <Blog/>;  
+        return <Blog />;
       case 'Profile':
-        return <Profile/>;
+        return <Profile />;
       case 'Account':
         return <div>Account</div>;
+      case 'Create':
+        return <div>Create</div>;
       case 'Logout':
         logoutWithRedirect();
     }
@@ -59,7 +57,7 @@ export default function Home() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="Blog" setPage={setPage}/>
+        <Header title="Blog" setPage={setPage} />
         <main>
           {renderPage(page)}
         </main>

@@ -13,13 +13,6 @@ import Link from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
 import PropTypes from 'prop-types';
 
-
-
-
-// import post1 from './blog-post.1.md';
-// import post2 from './blog-post.2.md';
-// import post3 from './blog-post.3.md';
-
 const sections = [
     { title: 'All Engineering Topics', url: '#' },
     { title: 'Cloud', url: '#' },
@@ -32,7 +25,7 @@ const sections = [
 ];
 
 const mainFeaturedPost = {
-    title: 'Title of a longer featured blog post',
+    title: 'Title of a highlighted tutorial',
     description:
         "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
     image: 'https://source.unsplash.com/random?wallpapers',

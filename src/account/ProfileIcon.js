@@ -7,51 +7,27 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import { useAuth0 } from "@auth0/auth0-react";
-import {useNavigate} from "react-router-dom"
 
 const settings = ['Profile', 'Account', 'Logout'];
 
 const ProfileIcon = ({ setPage }) => {
-    const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const {
-        user,
-        isAuthenticated,
-        loginWithRedirect,
-        logout,
-    } = useAuth0();
+    const { user } = useAuth0();
 
-const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
     const handleUserMenu = (setting) => {
         setPage(setting);
-        // if (setting == "Logout") logoutWithRedirect();
-        // if (setting == "Profile") navigateToProfile();
         setAnchorElUser(null);
     };
-
-    const logoutWithRedirect = () =>
-        logout({
-            logoutParams: {
-                returnTo: window.location.origin,
-            }
-        });
-     
 
     return (
         <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt={Array.from(user?.nickname)[0]} src="/static/images/avatar/2.jpg" />
                 </IconButton>
             </Tooltip>
             <Menu
