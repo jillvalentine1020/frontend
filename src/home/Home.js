@@ -12,6 +12,7 @@ import Header from './Header';
 import Blog from '../blog/Blog';
 import Profile from "../profile/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
+import Tutorial from "../tutorial/Tutorial";
 
 const darkTheme = createTheme({
   palette: {
