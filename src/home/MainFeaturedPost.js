@@ -5,8 +5,14 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../features/pageupdate/Slice'
+
 
 function MainFeaturedPost(props) {
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+
   const { post } = props;
 
   return (
@@ -49,8 +55,11 @@ function MainFeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
-              {post.linkText}
+            <Link
+              variant="subtitle1"
+              onClick={() => dispatch(increment())}
+            >
+              {post.linkText + count}
             </Link>
           </Box>
         </Grid>

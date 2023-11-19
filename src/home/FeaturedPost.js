@@ -6,9 +6,17 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../features/pageupdate/Slice'
+
 
 function FeaturedPost(props) {
   const { post } = props;
+
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch() 
 
   return (
     <Grid item xs={12} md={6}>

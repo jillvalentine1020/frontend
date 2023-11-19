@@ -1,6 +1,6 @@
 import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Container } from "reactstrap";
 import Profile from './profile/Profile';
 import { createBrowserHistory } from 'history';
@@ -17,11 +17,11 @@ const App = () => {
     return <div>Oops... {error.message}</div>;
   }
   if (isLoading) {
-    return <LoadingIcon/>;
+    return <LoadingIcon />;
   }
   return (
-   <Home/>
+    <Home />
   );
-} 
+}
 
 export default App;
