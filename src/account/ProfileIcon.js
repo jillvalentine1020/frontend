@@ -10,7 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const settings = ['Profile', 'Account', 'Logout'];
 
-const ProfileIcon = ({ setPage }) => {
+const ProfileIcon = ({}) => {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const { user } = useAuth0();
 
@@ -19,7 +19,7 @@ const ProfileIcon = ({ setPage }) => {
     };
 
     const handleUserMenu = (setting) => {
-        setPage(setting);
+        //setPage(setting);
         setAnchorElUser(null);
     };
 

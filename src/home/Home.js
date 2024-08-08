@@ -14,6 +14,7 @@ import Create from '../create/Create';
 import Profile from "../profile/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import Tutorial from "../tutorial/Tutorial";
+import { Outlet } from "react-router-dom";
 
 const darkTheme = createTheme({
   palette: {
@@ -23,7 +24,7 @@ const darkTheme = createTheme({
 
 
 export default function Home() {
-  const [page, setPage] = useState("Blog");
+  //const [page, setPage] = useState("Blog");
   const {
     user,
     isAuthenticated,
@@ -58,16 +59,19 @@ export default function Home() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Header title="Blog" setPage={setPage} />
+      <Container>
+        <Header title="Blog"  />
         <main>
-          {renderPage(page)}
+          <div id="detail">
+            <Outlet />
+          </div>
+          {/* {renderPage(page)} */}
         </main>
-      </Container>
-      <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
-      />
+        <Footer
+          title="Footer"
+          description="Something here to give the footer a purpose!"
+        />
+       </Container>
     </ThemeProvider>
   );
 }

@@ -10,7 +10,7 @@ import LoginButton from '../login/LoginButton';
 import ProfileIcon from '../account/ProfileIcon';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Header = ({ title, setPage }) => {
+const Header = ({ title }) => {
   const {
     user,
     isAuthenticated,
@@ -24,7 +24,8 @@ const Header = ({ title, setPage }) => {
         {isAuthenticated ?
           <Button
             size="small"
-            onClick={() => setPage("Create")}
+            // onClick={() => setPage("Create")}
+            href="create"
           >
             Create Tutorial
           </Button> : null}
@@ -38,13 +39,13 @@ const Header = ({ title, setPage }) => {
         >
           <Button
             variant="text"
-            onClick={() => setPage("Blog")}
+            // onClick={() => setPage("Blog")}
           >{title}</Button>
         </Typography>
         <IconButton>
           <SearchIcon />
         </IconButton>
-        {isAuthenticated ? <ProfileIcon setPage={setPage} /> : <LoginButton />}
+        {isAuthenticated ? <ProfileIcon  /> : <LoginButton />}
       </Toolbar>
     </React.Fragment>
   );
