@@ -6,7 +6,9 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '../features/pageupdate/Slice'
+import { decrement, increment, updatePage } from '../features/pageupdate/Slice'
+import CardActionArea from '@mui/material/CardActionArea';
+import Card from '@mui/material/Card';
 
 
 function MainFeaturedPost(props) {
@@ -42,7 +44,11 @@ function MainFeaturedPost(props) {
       />
       <Grid container>
         <Grid item md={6}>
-          <Box
+        <CardActionArea 
+          component="a" 
+          onClick={() => dispatch(increment())}>
+            <Card sx={{ display: 'flex' }}>
+              <Box
             sx={{
               position: 'relative',
               p: { xs: 3, md: 6 },
@@ -57,11 +63,13 @@ function MainFeaturedPost(props) {
             </Typography>
             <Link
               variant="subtitle1"
-              onClick={() => dispatch(increment())}
+              onClick={() => dispatch(updatePage())}
             >
               {post.linkText + count}
             </Link>
           </Box>
+          </Card>
+          </CardActionArea>
         </Grid>
       </Grid>
     </Paper>

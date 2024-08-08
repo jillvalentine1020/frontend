@@ -10,6 +10,7 @@ import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Header from './Header';
 import Blog from '../blog/Blog';
+import Create from '../create/Create';
 import Profile from "../profile/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import Tutorial from "../tutorial/Tutorial";
@@ -48,7 +49,7 @@ export default function Home() {
       case 'Account':
         return <div>Account</div>;
       case 'Create':
-        return <div>Create</div>;
+        return <Create />;
       case 'Logout':
         logoutWithRedirect();
     }
