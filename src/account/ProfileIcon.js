@@ -12,15 +12,30 @@ const settings = ['Profile', 'Account', 'Logout'];
 
 const ProfileIcon = ({}) => {
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const { user } = useAuth0();
+    const { user, logout } = useAuth0();
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
+    const handleLogout = () => {
+        logout({
+          logoutParams: {
+            returnTo: window.location.origin,
+          },
+        });
+      };
+
     const handleUserMenu = (setting) => {
         //setPage(setting);
+        console.log("setting" + setting);
         setAnchorElUser(null);
+        switch(setting) {
+            case 'Logout':
+              handleLogout();
+            default:
+              return 'foo';
+        }
     };
 
     return (
