@@ -20,6 +20,7 @@ import LoginButton from '../login/LoginButton';
 import ProfileIcon from '../account/ProfileIcon';
 import Button from '@mui/material/Button';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -179,13 +180,13 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton> */}
           {isAuthenticated ?
-          <IconButton
-            size="medium"
-            href="create">
+            <IconButton
+              size="medium"
+              href="create">
 
-            <AddBoxIcon/>
-          </IconButton>
-          : null}
+              <AddBoxIcon />
+            </IconButton>
+            : null}
           <Typography
             variant="h6"
             noWrap
@@ -203,6 +204,13 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <Box>
+            <IconButton
+              size="medium"
+              href="blog">
+            <HomeIcon />
+            </IconButton>
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
