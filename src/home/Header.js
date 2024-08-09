@@ -20,7 +20,7 @@ const Header = ({ title }) => {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', border: '1px solid red' }}>
         {isAuthenticated ?
           <Button
             size="small"
@@ -39,12 +39,14 @@ const Header = ({ title }) => {
         >
           <Button
             variant="text"
+            href="blog"
             // onClick={() => setPage("Blog")}
           >{title}</Button>
         </Typography>
         <IconButton>
           <SearchIcon />
         </IconButton>
+        {console.log("authed?"+ isAuthenticated)}
         {isAuthenticated ? <ProfileIcon  /> : <LoginButton />}
       </Toolbar>
     </React.Fragment>

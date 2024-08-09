@@ -24,38 +24,6 @@ const darkTheme = createTheme({
 
 
 export default function Home() {
-  //const [page, setPage] = useState("Blog");
-  const {
-    user,
-    isAuthenticated,
-    loginWithRedirect,
-    logout,
-    isLoading,
-    error
-  } = useAuth0();
-
-  const logoutWithRedirect = () =>
-    logout({
-      logoutParams: {
-        returnTo: window.location.origin,
-      }
-    });
-
-  const renderPage = (page) => {
-    switch (page) {
-      case 'Blog':
-        return <Blog />;
-      case 'Profile':
-        return <Profile />;
-      case 'Account':
-        return <div>Account</div>;
-      case 'Create':
-        return <Create />;
-      case 'Logout':
-        logoutWithRedirect();
-    }
-  }
-
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -65,7 +33,6 @@ export default function Home() {
           <div id="detail">
             <Outlet />
           </div>
-          {/* {renderPage(page)} */}
         </main>
         <Footer
           title="Footer"

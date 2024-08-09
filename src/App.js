@@ -6,22 +6,20 @@ import Profile from './profile/Profile';
 import { createBrowserHistory } from 'history';
 import Home from './home/Home';
 import LoadingIcon from './utilities/LoadingIcon';
-const history = createBrowserHistory();
+import Blog from './blog/Blog';
+import Create from './create/Create';
 
+// const history = createBrowserHistory();
 
-const App = () => {
-
-  const { isLoading, error } = useAuth0();
-
-  if (error) {
-    return <div>Oops... {error.message}</div>;
-  }
-  if (isLoading) {
-    return <LoadingIcon />;
-  }
+export const App = () => {
   return (
-    <Home />
+    <Routes>
+      <Route path="/" element={<Home />}>
+        <Route path="blog" element={<Blog />} />
+        <Route path="create" element={<Create />} />
+      </Route>
+    </Routes>
   );
-}
+};
 
-export default App;
+// export default App;
